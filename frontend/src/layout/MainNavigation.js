@@ -23,7 +23,7 @@ function MainNavigation() {
     ]
 
     return (
-        <header className="bg-dark text-white">
+        <header className="bg-dark text-white sticky-top">
             <div className="container py-2 d-flex align-items-center">
                 <span className="h4 me-4 my-0">React API Beispiel</span>
                 <ul className="nav nav-pills">
