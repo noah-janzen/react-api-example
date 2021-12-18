@@ -29,7 +29,6 @@ function BitcoinHistory(props) {
                     }
                 })
                 setBitcoinPrices(bitcoinPrices.reverse())
-                console.log(bitcoinPrices)
                 setIsLoading(false)
             })
     }, [])
