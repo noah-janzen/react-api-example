@@ -68,7 +68,6 @@ export function getBitcoinHistory(numberOfDays = 10, currency = 'EUR') {
 ### API-Aufruf in einer Komponente
 
 Um die historischen Bitcoin-Preise im Frontend anzuzeigen, muss die eben erstellte Funktion in einer React-Komponente aufgerufen werden. Dies geschieht innerhalb der useEffect-Hook von React, da wir die Daten zu Beginn laden möchten, aber nicht bei jedem Rendern der Komponente. Wichtig ist, dass der zweite Parameter von useEffect ein leeres Array ist. Lassen wir den Parameter weg, dann landen wir in einer Endlosschleife: Der hook wird ausgefüht, wenn die Komponente mounted, aber auch, wenn die Komponente aktualisiert wird. Da wir den state nach dem Fetchen der Daten vom Server aktualisieren, wird die Komponente aktualisiert und der effekt-Hook startet von vorn.
-Während die Daten geladen werden, wird ein Loading Spinner angezeigt. Sobald die Bitcoin-Preise im Frontend verfügbar sind, wird eine entsprechende Tabelle dargestellt.
 
 ```javascript
 function BitcoinHistory(props) {
@@ -133,6 +132,8 @@ function BitcoinHistory(props) {
     )
 }
 ```
+
+Während die Daten geladen werden, wird ein Loading Spinner angezeigt. Sobald die Bitcoin-Preise im Frontend verfügbar sind, wird eine entsprechende Tabelle dargestellt.
 
 ## Erstellung einer eigenen API mit Node.js, Express und SQLite
 
