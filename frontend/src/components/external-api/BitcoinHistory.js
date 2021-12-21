@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { getBitcoinHistory } from '../../api/crypto-api'
+import LoadingSpinner from '../common/LoadingSpinner'
 
 function BitcoinHistory(props) {
     const [isLoading, setIsLoading] = useState(true)
@@ -20,13 +21,7 @@ function BitcoinHistory(props) {
     }, [])
 
     if (isLoading) {
-        return (
-            <div className="d-flex justify-content-center">
-                <div className="spinner-border" role="status">
-                    <span className="visually-hidden">Loading...</span>
-                </div>
-            </div>
-        )
+        return <LoadingSpinner />
     }
 
     return (
