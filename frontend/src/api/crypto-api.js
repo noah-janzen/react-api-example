@@ -1,20 +1,18 @@
-const API_BASE_URL = 'https://min-api.cryptocompare.com/data/v2/'
+const API_BACKEND_URL = 'https://min-api.cryptocompare.com/data/v2/'
 
-export function getBitcoinHistory(numberOfDays = 30, currency = 'EUR') {
+export function getBitcoinHistory(numberOfDays = 10, currency = 'EUR') {
     return fetch(
-        `${API_BASE_URL}histoday?fsym=BTC&tsym=${currency}&limit=${numberOfDays}`
+        `${API_BACKEND_URL}histoday?fsym=BTC&tsym=${currency}&limit=${numberOfDays}`
     )
         .then((response) => response.json())
-        .then((data) => {
-            return data.Data.Data.map((data) => {
+        .then((jsonResponse) => {
+            return jsonResponse.Data.Data.map((data) => {
                 return {
                     date: new Date(+data.time * 1000),
                     open: data.open,
                     close: data.close,
                     high: data.high,
                     low: data.low,
-                    volumefrom: data.volumefrom,
-                    volumeto: data.volumeto,
                 }
             })
         })

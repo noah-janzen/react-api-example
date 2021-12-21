@@ -39,7 +39,6 @@ function BitcoinHistory(props) {
                         <th>Hoch</th>
                         <th>Tief</th>
                         <th>Schluss</th>
-                        <th>Volumen</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -56,9 +55,6 @@ function BitcoinHistory(props) {
                             <td>{bitcoinPrice.low.toLocaleString('de-DE')}</td>
                             <td>
                                 {bitcoinPrice.close.toLocaleString('de-DE')}
-                            </td>
-                            <td>
-                                {bitcoinPrice.volumeto.toLocaleString('de-DE')}
                             </td>
                         </tr>
                     ))}
