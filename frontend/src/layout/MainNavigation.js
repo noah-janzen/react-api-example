@@ -9,16 +9,12 @@ function MainNavigation() {
             url: '/',
         },
         {
-            name: 'Öffentliche API',
+            name: 'Public API',
             url: '/public-api',
         },
         {
             name: 'Express API',
             url: '/express-api',
-        },
-        {
-            name: 'Firebase API',
-            url: '/firebase-api',
         },
     ]
 
