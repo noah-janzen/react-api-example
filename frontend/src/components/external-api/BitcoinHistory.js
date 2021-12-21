@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import { useEffect } from 'react'
+import { getBitcoinHistory } from '../../api/crypto-api'
 
 function BitcoinHistory(props) {
     const [isLoading, setIsLoading] = useState(true)
     const [bitcoinPrices, setBitcoinPrices] = useState([])
+
     const dateOptions = {
         year: 'numeric',
         month: '2-digit',
@@ -12,25 +14,9 @@ function BitcoinHistory(props) {
 
     useEffect(() => {
         setIsLoading(true)
-        fetch(
-            'https://min-api.cryptocompare.com/data/v2/histoday?fsym=BTC&tsym=EUR&limit=10'
-        )
-            .then((response) => response.json())
-            .then((data) => {
-                const bitcoinPrices = data.Data.Data.map((data) => {
-                    return {
-                        date: new Date(+data.time * 1000),
-                        open: data.open,
-                        close: data.close,
-                        high: data.high,
-                        low: data.low,
-                        volumefrom: data.volumefrom,
-                        volumeto: data.volumeto,
-                    }
-                })
-                setBitcoinPrices(bitcoinPrices.reverse())
-                setIsLoading(false)
-            })
+        getBitcoinHistory(10, 'EUR')
+            .then((bitcoinPrices) => setBitcoinPrices(bitcoinPrices))
+            .finally(() => setIsLoading(false))
     }, [])
 
     if (isLoading) {
