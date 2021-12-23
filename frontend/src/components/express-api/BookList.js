@@ -1,18 +1,32 @@
 import { useState } from 'react'
 import { useEffect } from 'react'
-import { getBooks } from '../../api/express-api'
+import { useNavigate } from 'react-router-dom'
+import { getBooks, deleteBook } from '../../api/express-api'
 import LoadingSpinner from '../common/LoadingSpinner'
 
 function BookList(props) {
     const [isLoading, setIsLoading] = useState(true)
     const [books, setBooks] = useState(undefined)
+    const navigate = useNavigate()
 
     useEffect(() => {
+        fetchBooks()
+    }, [])
+
+    function deleteBookAndReload(id) {
+        deleteBook(id).then(() => fetchBooks())
+    }
+
+    function fetchBooks() {
         setIsLoading(true)
         getBooks()
             .then((books) => setBooks(books.books))
             .finally(() => setIsLoading(false))
-    }, [])
+    }
+
+    function editBook(id) {
+        navigate(`edit-book/${id}`)
+    }
 
     if (isLoading) {
         return <LoadingSpinner />
@@ -20,28 +34,40 @@ function BookList(props) {
 
     return (
         <div>
-            <table className="table table-striped table-hover">
+            <table className="table table-hover">
                 <thead>
                     <tr>
-                        <th>Cover</th>
                         <th>Titel</th>
                         <th>Untertitel</th>
-                        <th>Veröffentlichungsjahr</th>
+                        <th>Jahr</th>
+                        <th></th>
                     </tr>
                 </thead>
 
                 <tbody>
                     {books.map((book) => (
                         <tr key={book.isbn}>
-                            <td>
-                                <img
-                                    src={book.cover_url}
-                                    className="img-thumbnail img-thumbnail-small"
-                                />
-                            </td>
                             <td>{book.title}</td>
                             <td>{book.subtitle}</td>
                             <td>{book.publication_year}</td>
+                            <td>
+                                <div className="d-flex">
+                                    <button
+                                        className="btn btn-warning me-2"
+                                        onClick={() => editBook(book.id)}
+                                    >
+                                        Bearbeiten
+                                    </button>
+                                    <button
+                                        className="btn btn-danger"
+                                        onClick={() =>
+                                            deleteBookAndReload(book.id)
+                                        }
+                                    >
+                                        Löschen
+                                    </button>
+                                </div>
+                            </td>
                         </tr>
                     ))}
                 </tbody>
