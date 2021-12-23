@@ -75,18 +75,11 @@ app.post('/api/books/', (request, response, next) => {
         title: request.body.title,
         subtitle: request.body.subtitle,
         publication_year: request.body.publication_year,
-        cover_url: request.body.cover_url,
     }
 
     const sql =
-        'INSERT INTO books (isbn, title, subtitle, publication_year, cover_url) VALUES (?, ?, ?, ?, ?)'
-    const params = [
-        data.isbn,
-        data.title,
-        data.subtitle,
-        data.publication_year,
-        data.cover_url,
-    ]
+        'INSERT INTO books (isbn, title, subtitle, publication_year) VALUES (?, ?, ?, ?)'
+    const params = [data.isbn, data.title, data.subtitle, data.publication_year]
     db.run(sql, params, function (err, result) {
         if (err) {
             response.status(400).json({ error: err.message })
@@ -108,7 +101,6 @@ app.patch('/api/books/:id', (request, response, next) => {
         title: request.body.title,
         subtitle: request.body.subtitle,
         publication_year: request.body.publication_year,
-        cover_url: request.body.cover_url,
     }
 
     db.run(
@@ -116,15 +108,13 @@ app.patch('/api/books/:id', (request, response, next) => {
             isbn = COALESCE(?, isbn),
             title = COALESCE(?, title),
             subtitle = COALESCE(?, subtitle),
-            publication_year = COALESCE(?, publication_year),
-            cover_url = COALESCE(?, cover_url)
+            publication_year = COALESCE(?, publication_year)
             WHERE id = ?`,
         [
             data.isbn,
             data.title,
             data.subtitle,
             data.publication_year,
-            data.cover_url,
             request.params.id,
         ],
         function (err, result) {
