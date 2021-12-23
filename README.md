@@ -30,7 +30,7 @@ Schritte zum Öffnen des Beispielprojekts:
     ```
 3. Starten Sie das Backend:
     ```
-    npm start:server
+    npm run start:server
     ```
 4. Öffnen Sie den Ordner `frontend` und installieren Sie alle Abhängigkeiten:
     ```
