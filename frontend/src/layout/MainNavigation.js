@@ -5,10 +5,6 @@ function MainNavigation() {
 
     const routes = [
         {
-            name: 'Übersicht',
-            url: '/',
-        },
-        {
             name: 'Public API',
             url: '/public-api',
         },
