@@ -1,6 +1,6 @@
 # REST-APIs in React (Native) verwenden
 
-Dies ist eine Anleitung, um REST-APIs in einem React-Frontend zu verwenden. Mit Hilfe von REST-APIs können Client und Server miteinander kommunizieren und Daten austauschen. Sie sind sozusagen der »Klebstoff« zwischen Client und Server, also zwischen Front- und Backend.
+Dies ist eine Anleitung, um eine REST-API in einem React-Frontend zu verwenden. Mit Hilfe von REST-APIs können Client und Server miteinander kommunizieren und Daten austauschen. Sie sind sozusagen der »Klebstoff« zwischen Client und Server, also zwischen Front- und Backend.
 
 Zur Verdeutlichung folgendes Beispiel einer Bücherverwaltungsanwendung: Das Frontend der Anwendung verwendet eine API, um eine Liste aller gespeicherten Bücher zu laden. Die dazu notwendigen Daten werden in einer Datenbank auf dem Server gespeichert. Zusätzlich kann der Nutzer neue Bücher hinzufügen, existierende Bücher bearbeiten und Bücher löschen.
 
@@ -23,7 +23,7 @@ In diesem Repository befindet sich ein Beispielprojekt. Dort wird zum einen eine
 
 Schritte zum Öffnen des Beispielprojekts:
 
-1. Klonen Sie sich das Repository.
+1. Klonen Sie das Repository.
 2. Öffnen Sie den Ordner `backend` in einer neuen Kommandozeile und installieren Sie alle Abhängigkeiten:
     ```
     cd backend
@@ -449,4 +449,80 @@ Als letztes muss noch das Modul exportiert werden:
 
 ```javascript
 module.exports = app
+```
+
+### Anbindung der API im Frontend
+
+Die Anbindung unserer eigenen API geschieht analog zur Anbindung der öffentlichen Bitcoin-API. Zuerst erstellen wir im Frontend eine neue JavaScript-Datei `src/api/express-api.js`. Dort werden wir nun Funktionen hinzufügen, die API-Requests ausführen.
+
+#### Festlegung der API-Backend-URL
+
+Ganz oben in der Datei legen wir in einer Konstante die API-Backend-URL fest:
+
+```javascript
+const API_BACKEND_URL = 'http://localhost:8080/api'
+```
+
+#### Alle Bücher laden
+
+Um alle Bücher zu laden, rufen wir `fetch` mit dem passenden Endpunkt auf und parsen die Response als JSON-Objekt:
+
+```javascript
+export function getBooks() {
+    return fetch(`${API_BACKEND_URL}/books`).then((response) => response.json())
+}
+```
+
+#### Ein bestimmtes Buch laden
+
+```javascript
+export function getBook(id) {
+    return fetch(`${API_BACKEND_URL}/books/${id}`).then((response) =>
+        response.json()
+    )
+}
+```
+
+#### Ein Buch hinzufügen
+
+Wenn wir ein Buch hinzufügen wollen, müssen wir darauf achten, dass wir einen `POST`-Request senden, der im Body das hinzuzufügende Buch enthält.
+
+```javascript
+export function addBook(book) {
+    return fetch(`${API_BACKEND_URL}/books`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(book),
+    }).then((response) => response.json())
+}
+```
+
+#### Ein Buch bearbeiten
+
+Wollen wir eine existierende Ressource bearbeiten, so nutzen wir einen `PATCH`-Request. Im Body der Request steht das Buch.
+
+```javascript
+export function editBook(id, book) {
+    return fetch(`${API_BACKEND_URL}/books/${id}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(book),
+    }).then((response) => response.json())
+}
+```
+
+#### Ein Buch löschen
+
+Für die Löschung einer Ressource wird eine `DELETE`-Request gesendet.
+
+```javascript
+export function deleteBook(bookId) {
+    return fetch(`${API_BACKEND_URL}/books/${bookId}`, {
+        method: 'DELETE',
+    })
+}
 ```
