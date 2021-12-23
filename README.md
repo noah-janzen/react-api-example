@@ -4,18 +4,16 @@ Dies ist eine Anleitung, um eine REST-API in einem React-Frontend zu verwenden. 
 
 Als Beispiel dient im Folgenden eine Bücherverwaltungsanwendung: Das Frontend der Anwendung verwendet eine API, um eine Liste aller gespeicherten Bücher zu laden. Die dazu notwendigen Daten werden in einer Datenbank auf dem Server gespeichert. Zusätzlich kann der Nutzer neue Bücher hinzufügen, existierende Bücher bearbeiten und Bücher löschen.
 
-## Möglichkeiten zur Nutzung von APIs
+## The Big Picture
 
-Prinzipiell gibt es zwei Möglichkeiten, das Frontend um eine API zu erweitern:
+Nachfolgend werden zwei Möglichkeiten vorgestellt:
 
--   Nutzung einer existierenden, öffentlichen API (Public API)
--   Erstellung einer eigenen API (in dieser Anleitung mit Node.js, Express und SQLite)
+-   Sie nutzen eine existierende, öffentliche API (Public API).
+-   Sie erstellen eine eigenene API (Custom API).
 
 Die folgende Abbildung veranschaulicht den Datenaustausch zwischen Client und Server. Der Client, in unserem Fall ein React-Frontend, stellt das User Interface (UI) dar, mit dem der Anwender interagiert. Der Server implementiert die Geschäfts- und Authentifizierungslogik (falls vorhanden) und dient zur persistenten Datenspeicherung. Client und Server kommunizieren über eine REST-API, die Daten werden im JSON-Format ausgetauscht.
 
 ![](documentation/overview-tech-stack.svg)
-
-Anmerkung: Im Frontend dieser Testanwendung kommt das CSS-Framework [Bootstrap](https://getbootstrap.com/) zum Einsatz, damit wir keine Zeit fürs Schreiben von CSS aufwenden müssen.
 
 ## Beispielprojekt öffnen
 
@@ -58,7 +56,7 @@ In unserem Beispiel wollen wir historische Bitcoin-Preise der letzten Tage abfra
 -   `tsym`: Die Währung des Preises (z. B. `'EUR'` oder `'USD'`)
 -   `limit`: Die Anzahl an Datenpunkten (in unserem Fall die Anzahl an Tagen)
 
-### Anbindung der API ans React-Frontend
+### Anbindung der API im Frontend
 
 Die Anbindung der API geschieht im besten Fall in einer separaten Javascript-Datei. Dazu legen wir die Datei `crypto-api.js` im Ordner `src/api` im React-Frontend an. Als erstes definieren wir die API-Backend-URL als Konstante:
 
@@ -538,3 +536,7 @@ export function deleteBook(bookId) {
     })
 }
 ```
+
+### API-Aufrufe in Komponenten
+
+Die eben erstellen Funktionen können nun in React-Komponenten aufgerufen werden.
