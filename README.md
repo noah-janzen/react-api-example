@@ -17,6 +17,33 @@ Die folgende Abbildung veranschaulicht den Datenaustausch zwischen Client und Se
 
 Anmerkung: Im Frontend dieser Testanwendung kommt das CSS-Framework [Bootstrap](https://getbootstrap.com/) zum Einsatz, damit wir keine Zeit fürs Schreiben von CSS aufwenden müssen.
 
+## Beispielprojekt öffnen
+
+In diesem Repository befindet sich ein Beispielprojekt. Dort wird zum einen eine Public API zum Laden von Bitcoinpreisen verwendet. Zum anderen beinhaltet das Beispielprojekt ein eigenes Backend, dessen API ebenfalls im React-Frontend verwendet wird.
+
+Schritte zum Öffnen des Beispielprojekts:
+
+1. Klonen Sie sich das Repository.
+2. Öffnen Sie den Ordner `backend` in einer neuen Kommandozeile und installieren Sie alle Abhängigkeiten:
+    ```
+    cd backend
+    npm install
+    ```
+3. Starten Sie das Backend:
+    ```
+    npm start:server
+    ```
+4. Öffnen Sie den Ordner `frontend` und installieren Sie alle Abhängigkeiten:
+    ```
+    cd frontend
+    npm install
+    ```
+5. Starten Sie das Frontend:
+    ```
+    npm start
+    ```
+    Die Website sollte sich automatisch öffnen. Ansonsten ist die Website über die URL `http://localhost:3000` verfügbar.
+
 ## Nutzung einer existierenden, öffentlichen API (Public API)
 
 Die Verwendung einer bereits existierenden, öffentlichen API eignet sich dann, wenn beispielsweise öffentliche zugängliche Informationen wie Währungswechselkurse oder Wetterdaten abgerufen werden sollen.
