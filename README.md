@@ -297,7 +297,9 @@ Zu Beginn importieren wir wieder einige Module. Danach rufen wir einige Middlewa
 -   Der zweite Aufruf parsed die URL-Parameter als JSON-Objekt.
 -   Im dritten Aufruf werden einige Header der Response gesetzt.
 
-Anschließend folgt der API-Endpunkt `/api/books`, der alle gespeicherten Bücher zurückgibt. In diesem Fall kommt das HTTP-Verb `GET` zum Einsatz, da lediglich Daten gelesen werden.
+#### Alle gespeicherten Bücher zurückgeben
+
+Nun folgt der API-Endpunkt `/api/books`, der alle gespeicherten Bücher zurückgibt. In diesem Fall kommt das HTTP-Verb `GET` zum Einsatz, da lediglich Daten gelesen werden.
 
 ```javascript
 app.get('/api/books', (request, response, next) => {
@@ -317,6 +319,8 @@ app.get('/api/books', (request, response, next) => {
     })
 })
 ```
+
+#### Ein bestimmtes Buch zurückgeben
 
 Um die Informationen eines einzelnen Buches zu erhalten, kann folgender Code verwendet werden:
 
@@ -338,6 +342,8 @@ app.get('/api/books/:id', (request, response, next) => {
     })
 })
 ```
+
+#### Ein Buch hinzufügen
 
 Ein neues Buch kann wie folgt hinzugefügt werden. Hier wird das HTTP-Verb `POST` verwendet.
 
@@ -385,6 +391,8 @@ app.post('/api/books/', (request, response, next) => {
 })
 ```
 
+#### Ein Buch aktualisieren
+
 Zum Aktualisieren eines Buchs wird das HTTP-Verb `PATCH` verwendet:
 
 ```javascript
@@ -426,6 +434,8 @@ app.patch('/api/books/:id', (request, response, next) => {
 })
 ```
 
+#### Ein Buch löschen
+
 Um ein Buch zu löschen, kommt das HTTP-Verb `DELETE` zum Einsatz:
 
 ```javascript
@@ -444,6 +454,8 @@ app.delete('/api/books/:id', (request, response, next) => {
     })
 })
 ```
+
+#### Exportieren des Moduls
 
 Als letztes muss noch das Modul exportiert werden:
 
