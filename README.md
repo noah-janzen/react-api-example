@@ -21,6 +21,7 @@ In diesem Repository befindet sich ein Beispielprojekt. Dort wird zum einen eine
 
 Schritte zum Öffnen des Beispielprojekts:
 
+0. Falls noch nicht geschehen: Installieren Sie [Node.js](https://nodejs.org/en/download/).
 1. Klonen Sie das Repository.
 2. Öffnen Sie den Ordner `backend` in einer neuen Kommandozeile und installieren Sie alle Abhängigkeiten:
     ```
@@ -540,3 +541,18 @@ export function deleteBook(bookId) {
 ### API-Aufrufe in Komponenten
 
 Die eben erstellen Funktionen können nun in React-Komponenten aufgerufen werden.
+
+### Starten des Backends
+
+Ergänzen Sie in der Datei `backend/package.json` folgende Zeile im Objekt `scripts`:
+
+```javascript
+"start:server": "nodemon server.js"
+```
+
+Das Backend lässt sich dann wie folgt starten. Bei Änderungen wird das Backend automatisch neugestartet.
+
+```
+cd backend
+npm start:server
+```
