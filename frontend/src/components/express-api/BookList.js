@@ -51,7 +51,7 @@ function BookList(props) {
                             <td>{book.subtitle}</td>
                             <td>{book.publication_year}</td>
                             <td>
-                                <div className="d-flex">
+                                <div className="d-flex justify-content-end">
                                     <button
                                         className="btn btn-warning me-2"
                                         onClick={() => editBook(book.id)}

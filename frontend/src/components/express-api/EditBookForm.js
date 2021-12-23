@@ -6,7 +6,6 @@ function EditBookForm({ onSave, bookId }) {
     const [subtitle, setSubtitle] = useState('')
     const [isbn, setIsbn] = useState('')
     const [publicationYear, setPublicationYear] = useState('')
-    const [coverUrl, setCoverUrl] = useState('')
 
     useEffect(() => {
         if (!bookId) {
@@ -17,7 +16,6 @@ function EditBookForm({ onSave, bookId }) {
             setSubtitle(book.subtitle)
             setIsbn(book.isbn)
             setPublicationYear(book.publication_year)
-            setCoverUrl(book.cover_url)
         })
     }, [])
 
@@ -27,7 +25,6 @@ function EditBookForm({ onSave, bookId }) {
             title: title,
             subtitle: subtitle,
             publication_year: publicationYear,
-            cover_url: coverUrl,
         }
 
         onSave(newBook)
@@ -81,22 +78,9 @@ function EditBookForm({ onSave, bookId }) {
                 <input
                     id="bookPublicationYear"
                     className="form-control"
-                    type="text"
+                    type="number"
                     value={publicationYear}
                     onChange={(e) => setPublicationYear(e.target.value)}
-                />
-            </div>
-
-            <div className="mb-3">
-                <label htmlFor="bookCoverUrl" className="form-label">
-                    Cover URL
-                </label>
-                <input
-                    id="bookCoverUrl"
-                    className="form-control"
-                    type="text"
-                    value={coverUrl}
-                    onChange={(e) => setCoverUrl(e.target.value)}
                 />
             </div>
 

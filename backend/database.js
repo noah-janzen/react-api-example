@@ -17,7 +17,6 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
         title TEXT,
         subtitle TEXT,
         publication_year INTEGER,
-        cover_url text,
         CONSTRAINT isbn_unique UNIQUE (isbn)
     )`,
         (err) => {
@@ -26,13 +25,12 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
             } else {
                 // table just created, creating some rows
                 const insert =
-                    'INSERT INTO books (isbn, title, subtitle, publication_year, cover_url) VALUES (?, ?, ?, ?, ?)'
+                    'INSERT INTO books (isbn, title, subtitle, publication_year) VALUES (?, ?, ?, ?)'
                 db.run(insert, [
                     '978-3-86490-552-0',
                     'React',
                     'Grundlagen, fortgeschrittene Techniken und Praxistipps – mit TypeScript und Redux',
                     2019,
-                    'https://dpunkt.de/wp-content/uploads/2020/07/13201-scaled-600x873.jpg',
                 ])
             }
         }
