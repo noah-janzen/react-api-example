@@ -2,7 +2,7 @@
 
 Dies ist eine Anleitung, um eine REST-API in einem React-Frontend zu verwenden. Mit Hilfe von REST-APIs können Client und Server miteinander kommunizieren und Daten austauschen. Sie sind sozusagen der »Klebstoff« zwischen Client und Server, also zwischen Front- und Backend.
 
-Zur Verdeutlichung folgendes Beispiel einer Bücherverwaltungsanwendung: Das Frontend der Anwendung verwendet eine API, um eine Liste aller gespeicherten Bücher zu laden. Die dazu notwendigen Daten werden in einer Datenbank auf dem Server gespeichert. Zusätzlich kann der Nutzer neue Bücher hinzufügen, existierende Bücher bearbeiten und Bücher löschen.
+Als Beispiel dient im Folgenden eine Bücherverwaltungsanwendung: Das Frontend der Anwendung verwendet eine API, um eine Liste aller gespeicherten Bücher zu laden. Die dazu notwendigen Daten werden in einer Datenbank auf dem Server gespeichert. Zusätzlich kann der Nutzer neue Bücher hinzufügen, existierende Bücher bearbeiten und Bücher löschen.
 
 ## Möglichkeiten zur Nutzung von APIs
 
