@@ -1,3 +1,4 @@
+import ActionBar from '../components/express-api/ActionBar'
 import BookList from '../components/express-api/BookList'
 
 function ExpressApi(props) {
@@ -5,6 +6,7 @@ function ExpressApi(props) {
         <div>
             <h1>Bücherverwaltung</h1>
             <BookList />
+            <ActionBar />
         </div>
     )
 }
