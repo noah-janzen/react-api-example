@@ -39,6 +39,7 @@ function BookList(props) {
                     <tr>
                         <th>Titel</th>
                         <th>Untertitel</th>
+                        <th>ISBN</th>
                         <th>Jahr</th>
                         <th></th>
                     </tr>
@@ -49,6 +50,7 @@ function BookList(props) {
                         <tr key={book.isbn}>
                             <td>{book.title}</td>
                             <td>{book.subtitle}</td>
+                            <td>{book.isbn}</td>
                             <td>{book.publication_year}</td>
                             <td>
                                 <div className="d-flex justify-content-end">
