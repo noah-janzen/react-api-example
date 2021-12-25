@@ -1,3 +1,7 @@
 .img-thumbnail-small {
     max-width: 6rem;
 }
+
+table tr.vertical-align td {
+    vertical-align: middle;
+}

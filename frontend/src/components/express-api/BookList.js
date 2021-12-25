@@ -47,7 +47,7 @@ function BookList(props) {
 
                 <tbody>
                     {books.map((book) => (
-                        <tr key={book.isbn}>
+                        <tr key={book.isbn} className="vertical-align">
                             <td>{book.title}</td>
                             <td>{book.subtitle}</td>
                             <td>{book.isbn}</td>
