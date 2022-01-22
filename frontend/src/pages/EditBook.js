@@ -10,8 +10,9 @@ function EditBook() {
     function onSaveBook(book) {
         if (bookId) {
             editBook(bookId, book).then(() => navigate('/express-api'))
+        } else {
+            addBook(book).then(() => navigate('/express-api'))
         }
-        addBook(book).then(() => navigate('/express-api'))
     }
 
     return (
