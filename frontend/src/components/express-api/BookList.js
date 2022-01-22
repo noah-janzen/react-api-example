@@ -33,7 +33,7 @@ function BookList(props) {
     }
 
     return (
-        <div>
+        <div class="table-responsive">
             <table className="table table-hover">
                 <thead>
                     <tr>

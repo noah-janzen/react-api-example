@@ -25,7 +25,7 @@ function BitcoinHistory(props) {
     }
 
     return (
-        <div>
+        <div class="table-responsive">
             <table className="table table-striped table-hover">
                 <thead>
                     <tr>
